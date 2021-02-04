@@ -3,7 +3,7 @@
 <el-container>
   <el-header>
     <el-col :span="24">
-      <div class="accsty" @click="islogin">
+      <div class="accsty" @click="tologin">
       <div>
        <el-avatar icon="el-icon-user-solid"></el-avatar>
       </div>
@@ -12,42 +12,42 @@
       </el-col>
   </el-header>
   <el-main>
-    <el-col :span="24"><div class="accsty" @click="islogin">
+    <el-col :span="24"><div class="accsty" @click="comingsoon">
       <img class="logoimg" src="../../assets/accountimg/redpaper.png" alt="">
       <span class="fontsty">红包</span>
       <i class="el-icon-arrow-right"></i>
       </div>
       </el-col>
       
-    <el-col :span="24"><div class="accsty" @click="islogin">
+    <el-col :span="24"><div class="accsty" @click="comingsoon">
       <img class="logoimg" src="../../assets/accountimg/discount.png" alt="">
       <span class="fontsty">优惠卷</span>
       <i class="el-icon-arrow-right"></i>
       </div>
       </el-col>
       
-    <el-col :span="24"><div class="accsty" @click="islogin">
+    <el-col :span="24"><div class="accsty" @click="comingsoon">
       <img class="logoimg" src="../../assets/accountimg/receipt.png" alt="">
       <span class="fontsty">店铺小票</span>
       <i class="el-icon-arrow-right"></i>
       </div>
       </el-col>
       
-    <el-col :span="24"><div class="accsty" @click="islogin">
+    <el-col :span="24"><div class="accsty" @click="comingsoon">
       <img class="logoimg" src="../../assets/accountimg/service.png" alt="">
       <span class="fontsty">客服中心</span>
       <i class="el-icon-arrow-right"></i>
       </div>
       </el-col>
       
-    <el-col :span="24"><div class="accsty" @click="islogin">
+    <el-col :span="24"><div class="accsty" @click="comingsoon">
       <img class="logoimg" src="../../assets/accountimg/about.png" alt="">
       <span class="fontsty">关于我们</span>
       <i class="el-icon-arrow-right"></i>
       </div>
       </el-col>
       
-    <el-col :span="24"><div class="accsty" @click="islogin">
+    <el-col :span="24"><div class="accsty" @click="comingsoon">
       <img class="logoimg" src="../../assets/accountimg/setting.png" alt="">
       <span class="fontsty">设置</span>
       <i class="el-icon-arrow-right"></i>
@@ -64,10 +64,11 @@
 </template>
 
 <script>
-export default{
+export default {
   methods:{
-    islogin(){
-      alert("验证登陆")
+    tologin(){
+      //指定跳转地址
+      this.$router.push('/login')
     }
   }
 }

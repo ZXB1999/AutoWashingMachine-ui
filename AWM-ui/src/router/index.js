@@ -4,6 +4,8 @@ import homepage from '@/views/homepage/homepage.vue'
 import order from '@/views/order/order.vue'
 import mine from '@/views/account/mine.vue'
 import QRcode from '../components/QRcode/QRcode.vue'
+import login from '@/views/login/login.vue'
+import register from '@/views/login/register.vue'
 Vue.use(Router)
 
 //获取原型对象上的push函数
@@ -12,6 +14,7 @@ const originalPush = Router.prototype.push
 Router.prototype.push = function push(location) {
    return originalPush.call(this, location).catch(err => err)
 }
+
 
 export default new Router({
   //打包时带着个会找不到资源
@@ -28,7 +31,10 @@ export default new Router({
     },{
       path: '/order',
       name: 'order',
-      component: order
+      component: order,
+      meta: {
+        needLogin: true //需要加校检判断的路由
+      }
     },{
       path: '/account',
       name: 'mine',
@@ -36,7 +42,20 @@ export default new Router({
     },{
       path: '/code',
       name: 'QRcode',
-      component: QRcode
+      component: QRcode,
+      meta: {
+        needLogin: true //需要加校检判断的路由
+      }
+    },{
+      path: '/login',
+      name: 'login',
+      component: login
+    },{
+      path: '/register',
+      name: 'register',
+      component: register
     }
+    
   ]
 })
+

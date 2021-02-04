@@ -8,6 +8,9 @@
 
     </div>
 </template>
+<script>
+
+</script>
 
 <style scoped>
 .el-col {
