@@ -11,11 +11,15 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import {comingsoon} from './utils/common.js';
 import SlideVerify from 'vue-monoplasty-slide-verify';
+import Vuex from "vuex"
 
 Vue.use(ElementUI, { size: 'small', zIndex: 3000 });
+Vue.use(SlideVerify);
+Vue.use(Vuex);
 Vue.config.productionTip = false
 Vue.prototype.comingsoon=comingsoon
-Vue.use(SlideVerify);
+Vue.prototype.axios = axios
+Vue.prototype.$=$
 
 /* eslint-disable no-new */
 new Vue({
@@ -30,7 +34,7 @@ new Vue({
 router.beforeEach(function(to, from, next) {
   if (to.meta.needLogin) {
     //页面是否登录
-    if (localStorage.getItem("token")) {
+    if (sessionStorage.getItem("token")) {
       //本地存储中是否有token(uid)数据
       next(); //表示已经登录
     } else {

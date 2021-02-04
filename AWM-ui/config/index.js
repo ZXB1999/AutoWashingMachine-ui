@@ -12,6 +12,13 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
+      '/Login': {
+        target: 'http://127.0.0.1:8092',  //这里后台的地址模拟的;应该填写你们真实的后台接口
+        changOrigin: true,  //允许跨域
+        pathRewrite: {
+          '^/Login': '/User/login' 
+        }
+      },
       '/CONSUMERUSER': {
         target: serverpath,  //这里后台的地址模拟的;应该填写你们真实的后台接口
         changOrigin: true,  //允许跨域

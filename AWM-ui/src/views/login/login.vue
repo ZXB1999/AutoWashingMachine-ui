@@ -2,12 +2,12 @@
   <div>
     <h1>请登陆</h1>
     <div style="margin: 20px;"></div>
-    <el-form :label-position="labelPosition" label-width="50px" :model="formLabelAlign">
+    <el-form :label-position="labelPosition"  label-width="50px" :model="formLabelAlign">
       <el-form-item label="账号">
         <el-input v-model="formLabelAlign.name"></el-input>
       </el-form-item>
       <el-form-item label="密码">
-        <el-input v-model="formLabelAlign.region"></el-input>
+        <el-input type="password" v-model="formLabelAlign.region"></el-input>
       </el-form-item>
     </el-form>
     <slide-verify 
@@ -23,9 +23,12 @@
             >
       </slide-verify>
       <div>{{msg}}</div>
+      <div style="height: 2em;"></div>
+      <div><span @click="comingsoon">新用户？点这里</span></div>
   </div>
 </template>
 <script>
+import axios from 'axios';
   export default {
     data() {
       return {
@@ -35,7 +38,7 @@
           require('../../assets/slideimg/sid0003.jpg')
         ],
         msg: '',
-        text: '向右滑',
+        text: '向右滑动滑块以登陆',
         labelPosition: 'right',
         formLabelAlign: {
           name: '',
@@ -46,13 +49,28 @@
     },
     methods: {
         onSuccess(){
-            this.msg = 'login success'
+            this.msg = '验证成功'
+            let base = {"awmusername": this.formLabelAlign.name,"password": this.formLabelAlign.region};
+            axios.post('/Login',base)
+                 .then(res=>{
+                   console.log('loginsuccess');
+                   console.log(res.data.token)
+                   if(res.status===200){
+                     localStorage.clear() //清理
+                     localStorage.setItem('info',1) //
+                     localStorage['flag']=1
+                     sessionStorage.clear()
+                     sessionStorage.setItem('userid','token')
+                     sessionStorage['token']=JSON.stringify(res.data.token)
+                     this.$router.push('/')
+                   }
+                   })
         },
         onFail(){
-            this.msg = ''
+            this.msg = '请再试一次'
         },
         onRefresh(){
-            this.msg = ''
+            this.msg = '机会不多哦'
         }
     }
   }
