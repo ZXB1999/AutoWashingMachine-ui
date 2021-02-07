@@ -34,7 +34,7 @@ new Vue({
 router.beforeEach(function(to, from, next) {
   if (to.meta.needLogin) {
     //页面是否登录
-    if (sessionStorage.getItem("token")) {
+    if (sessionStorage.getItem("access_token")&&sessionStorage.getItem("access_token")!='undefined') {
       //本地存储中是否有token(uid)数据
       next(); //表示已经登录
     } else {

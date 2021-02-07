@@ -50,18 +50,18 @@ import axios from 'axios';
     methods: {
         onSuccess(){
             this.msg = '验证成功'
-            let base = {"awmusername": this.formLabelAlign.name,"password": this.formLabelAlign.region};
-            axios.post('/Login',base)
+            axios.post('/Login?client_id='+"myapp"+"&client_secret="+"scma_app"+"&scope="+"all"+"&grant_type="+"password"+"&username="+this.formLabelAlign.name+"&password="+this.formLabelAlign.region)
                  .then(res=>{
-                   console.log('loginsuccess');
-                   console.log(res.data.token)
-                   if(res.status===200){
+                   if(res.data.msg===undefined){
                      localStorage.clear() //清理
                      localStorage.setItem('info',1) //
                      localStorage['flag']=1
                      sessionStorage.clear()
-                     sessionStorage.setItem('userid','token')
-                     sessionStorage['token']=JSON.stringify(res.data.token)
+                    //  sessionStorage.setItem('userid',res.data.username)
+                     sessionStorage['access_token']=JSON.stringify(res.data.access_token)
+                     this.$router.go(-1)
+                   }else{
+                     alert(res.data.msg)
                      this.$router.push('/')
                    }
                    })
