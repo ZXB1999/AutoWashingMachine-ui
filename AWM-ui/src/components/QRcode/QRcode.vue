@@ -40,13 +40,18 @@
 
         methods: {
             
-            onDecode (result) {
-                // alert(result);
+            onDecode (result) {;
                 console.log(result);
                 this.result = result
             },
             FindMachine () {
-                axios.get('/FINDMACHINE/'+this.result).then(response => (this.info = response))
+                axios.get('/FindMachineById/'+this.result,
+                {
+                    headers:{
+                        'Authorization': 'Bearer ' + sessionStorage.getItem("access_token"),
+                    }
+                }
+                ).then(response => (this.info = response))
             },
 
             

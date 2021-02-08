@@ -52,6 +52,7 @@ export default {
         }
         sessionStorage.clear(); 
         })
+      this.$router.push('/')
     }
   },
   components:{
