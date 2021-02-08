@@ -1,6 +1,6 @@
 <template>
 
-<div>
+<div id="homepage">
  
   <el-col :span="12"><div class="grid-content bg-purple" ><el-button type="primary" round @click="gotoQRcode">
     <span><img class="imgsty" src="../../assets/img/QRcode.png" alt=""></span><br><br>
@@ -57,6 +57,9 @@ export default {
 </script>
 
 <style scoped>
+#homepage{
+  margin-top: 60px;
+}
   .el-carousel__item h3 {
     color: #475669;
     font-size: 14px;
@@ -83,5 +86,4 @@ export default {
   .smallimgsty{
     width: 40px;
   }
-
 </style>

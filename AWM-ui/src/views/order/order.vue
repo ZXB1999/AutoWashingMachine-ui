@@ -1,6 +1,6 @@
 <template>
     <div>
-
+        <PageHeader></PageHeader>
         <el-col :span="24"><div class="orderallsty">
             订单内容
         </div></el-col>
@@ -9,7 +9,12 @@
     </div>
 </template>
 <script>
-
+import PageHeader from '../../components/PageHeader/PageHeader.vue';
+export default {
+    components:{
+        PageHeader
+  }
+}
 </script>
 
 <style scoped>

@@ -19,25 +19,11 @@ module.exports = {
           '^/Login': '/oauth/token' 
         }
       },
-      '/CONSUMERUSER': {
-        target: serverpath,  //这里后台的地址模拟的;应该填写你们真实的后台接口
+      '/Logout': {
+        target: 'http://localhost:9158',  //这里后台的地址模拟的;应该填写你们真实的后台接口
         changOrigin: true,  //允许跨域
         pathRewrite: {
-          '^/CONSUMERUSER': '/AWM/CONSUMERUSER/user' 
-        }
-      },
-      '/CONSUMERMACHINE': {
-        target: serverpath,  //这里后台的地址模拟的;应该填写你们真实的后台接口
-        changOrigin: true,  //允许跨域
-        pathRewrite: {
-          '^/CONSUMERMACHINE': '/AWM/CONSUMERMACHINE/consumer' 
-        }
-      },
-      '/FINDMACHINE': {
-        target: serverpath,  //这里后台的地址模拟的;应该填写你们真实的后台接口
-        changOrigin: true,  //允许跨域
-        pathRewrite: {
-          '^/FINDMACHINE': '/AWM/CONSUMERMACHINE/consumer/Machine/findbyid/' 
+          '^/Logout': '/oauth/Logout' 
         }
       }
     },

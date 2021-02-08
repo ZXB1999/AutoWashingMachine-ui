@@ -6,6 +6,7 @@ import mine from '@/views/account/mine.vue'
 import QRcode from '../components/QRcode/QRcode.vue'
 import login from '@/views/login/login.vue'
 import register from '@/views/login/register.vue'
+import setting from '@/views/account/setting.vue'
 Vue.use(Router)
 
 //获取原型对象上的push函数
@@ -54,6 +55,13 @@ export default new Router({
       path: '/register',
       name: 'register',
       component: register
+    },{
+      path: '/setting',
+      name: 'setting',
+      component: setting,
+      meta: {
+        needLogin: true //需要加校检判断的路由
+      }
     }
     
   ]

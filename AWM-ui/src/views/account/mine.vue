@@ -1,5 +1,6 @@
 <template>
 <div>
+  <PageHeader></PageHeader>
 <el-container>
   <el-header>
     <el-col :span="24">
@@ -47,7 +48,7 @@
       </div>
       </el-col>
       
-    <el-col :span="24"><div class="accsty" @click="comingsoon">
+    <el-col :span="24"><div class="accsty" @click="tosetting">
       <img class="logoimg" src="../../assets/accountimg/setting.png" alt="">
       <span class="fontsty">设置</span>
       <i class="el-icon-arrow-right"></i>
@@ -64,12 +65,20 @@
 </template>
 
 <script>
+import PageHeader from '../../components/PageHeader/PageHeader.vue';
 export default {
   methods:{
     tologin(){
       //指定跳转地址
       this.$router.push('/login')
+    },
+    tosetting(){
+      //指定跳转地址
+      this.$router.push('/setting')
     }
+  },
+  components:{
+        PageHeader
   }
 }
 </script>
@@ -106,5 +115,4 @@ export default {
     margin-top: 21.6px;
     float: right;
   }
-
 </style>

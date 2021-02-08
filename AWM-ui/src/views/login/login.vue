@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="login">
     <h1>请登陆</h1>
     <div style="margin: 20px;"></div>
     <el-form :label-position="labelPosition"  label-width="50px" :model="formLabelAlign">
@@ -49,22 +49,22 @@ import axios from 'axios';
     },
     methods: {
         onSuccess(){
-            this.msg = '验证成功'
+          this.msg = '验证成功'
             axios.post('/Login?client_id='+"myapp"+"&client_secret="+"scma_app"+"&scope="+"all"+"&grant_type="+"password"+"&username="+this.formLabelAlign.name+"&password="+this.formLabelAlign.region)
-                 .then(res=>{
-                   if(res.data.msg===undefined){
-                     localStorage.clear() //清理
-                     localStorage.setItem('info',1) //
-                     localStorage['flag']=1
-                     sessionStorage.clear()
-                    //  sessionStorage.setItem('userid',res.data.username)
-                     sessionStorage['access_token']=JSON.stringify(res.data.access_token)
-                     this.$router.go(-1)
-                   }else{
-                     alert(res.data.msg)
-                     this.$router.push('/')
-                   }
-                   })
+              .then(res=>{
+                if(res.status===200){
+                  localStorage.clear() //清理
+                  localStorage.setItem('info',1) //
+                  localStorage['flag']=1
+                  sessionStorage.clear()
+                  //  sessionStorage.setItem('userid',res.data.username)
+                  sessionStorage['access_token']=res.data.access_token
+                  this.$router.go(-1)
+                }
+              })
+              .catch(function () {
+                alert("用户名或密码错误")
+              });
         },
         onFail(){
             this.msg = '请再试一次'
@@ -76,6 +76,9 @@ import axios from 'axios';
   }
 </script>
 <style scoped>
+#login{
+  margin-top: 60px;
+}
 .el-input{
   width: 300px;
   right: 20px;
