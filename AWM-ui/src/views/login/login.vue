@@ -24,7 +24,7 @@
       </slide-verify>
       <div>{{msg}}</div>
       <div style="height: 2em;"></div>
-      <div><span @click="comingsoon">新用户？点这里</span></div>
+      <div><span class="spansty" @click="toregister">新用户？点这里</span></div>
   </div>
 </template>
 <script>
@@ -49,6 +49,10 @@ import axios from 'axios';
     },
     methods: {
         onSuccess(){
+          if(this.formLabelAlign.name===''||this.formLabelAlign.region===''){
+            alert("请输入用户名或密码")
+                location.reload();
+          }
           this.msg = '验证成功'
             axios.post('/Login?client_id='+"myapp"+"&client_secret="+"scma_app"+"&scope="+"all"+"&grant_type="+"password"+"&username="+this.formLabelAlign.name+"&password="+this.formLabelAlign.region)
               .then(res=>{
@@ -57,20 +61,24 @@ import axios from 'axios';
                   localStorage.setItem('info',1) //
                   localStorage['flag']=1
                   sessionStorage.clear()
-                  //  sessionStorage.setItem('userid',res.data.username)
+                  sessionStorage.setItem('userid',this.formLabelAlign.name)
                   sessionStorage['access_token']=res.data.access_token
                   this.$router.go(-1)
                 }
               })
               .catch(function () {
                 alert("用户名或密码错误")
+                location.reload();
               });
         },
         onFail(){
-            this.msg = '请再试一次'
+          this.msg = '请再试一次'
         },
         onRefresh(){
-            this.msg = '机会不多哦'
+          this.msg = '机会不多哦'
+        },
+        toregister(){
+          this.$router.push('/register')
         }
     }
   }
@@ -85,6 +93,9 @@ import axios from 'axios';
 }
 .slide-verify{
   margin: 0 auto;
+}
+.spansty{
+  color: #409EFF;
 }
 </style>
  

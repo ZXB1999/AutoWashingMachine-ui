@@ -4,7 +4,7 @@
         <el-col :span="24"><div class="orderallsty">
             订单内容
         </div></el-col>
-        <span class="historyorder">查看历史订单</span>
+        <span class="historyorder" @click="tohistoryorder">查看历史订单</span>
 
     </div>
 </template>
@@ -13,7 +13,12 @@ import PageHeader from '../../components/PageHeader/PageHeader.vue';
 export default {
     components:{
         PageHeader
-  }
+    },
+    methods:{
+        tohistoryorder(){
+          this.$router.push('/historyorder')
+        }
+    }
 }
 </script>
 

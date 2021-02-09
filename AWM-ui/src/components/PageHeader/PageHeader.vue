@@ -1,6 +1,6 @@
 <template>
 <div id="pageheader">
-    <el-page-header @back="goBack" content="详情页面">
+    <el-page-header @back="goBack"  :content="pagetext">
     </el-page-header>
 </div>
   
@@ -8,12 +8,31 @@
 
 <script>
   export default {
+    data() {
+    return{
+      pagetext:''
+    };
+  },
     methods: {
       goBack() {
         this.$router.go(-1)
-        console.log('go back');
       }
-    }
+    },
+    mounted(){
+      switch(this.$route.path) {
+     case '/account':
+        this.pagetext='我的'
+        break;
+     case '/setting':
+        this.pagetext='设置'
+        break;
+     case '/order':
+        this.pagetext='订单'
+        break;
+     default:
+        this.pagetext='页面信息-默认'
+} 
+    } 
   }
 </script>
 
@@ -22,5 +41,4 @@
   margin-top: 20px;
   margin-bottom: 20px;
 }
-
 </style>

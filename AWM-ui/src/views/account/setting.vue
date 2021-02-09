@@ -6,26 +6,26 @@
     <el-col :span="24"><div class="accsty" @click="comingsoon">
       <span class="fontsty">头像</span>
       <i class="el-icon-arrow-right"></i>
-      <img class="logoimg" src="../../assets/accountimg/redpaper.png" alt="">
+      <el-avatar icon="el-icon-user-solid"></el-avatar>
       </div>
       </el-col>
       
     <el-col :span="24"><div class="accsty" @click="comingsoon">
       <span class="fontsty">昵称</span>
       <i class="el-icon-arrow-right"></i>
-      <img class="logoimg" src="../../assets/accountimg/discount.png" alt="">
+      <span class="spansty">这里会显示用户昵称</span>
       </div>
       </el-col>
       
     <el-col :span="24"><div class="accsty" @click="comingsoon">
       <span class="fontsty">更换手机号</span>
       <i class="el-icon-arrow-right"></i>
-      <img class="logoimg" src="../../assets/accountimg/receipt.png" alt="">
+      <span class="spansty">这里会显示用户手机号</span>
       </div>
       </el-col>
       
     <el-col :span="24"><div class="accsty" @click="tologout">
-      <span class="fontsty">注销</span>
+      <span class="fontsty">退出登陆</span>
       <i class="el-icon-arrow-right"></i>
       </div>
       </el-col>
@@ -93,6 +93,15 @@ export default {
   }
   .el-icon-arrow-right{
     margin-top: 21.6px;
+    float: right;
+  }
+  .spansty{
+    float: right;
+    line-height: 60px;
+    text-align: center;
+    font-size: 15px;
+  }
+  .el-avatar{
     float: right;
   }
 </style>

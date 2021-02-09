@@ -4,14 +4,26 @@
 <el-container>
   <el-header>
     <el-col :span="24">
-      <div class="accsty" @click="tologin">
-      <div>
-       <el-avatar icon="el-icon-user-solid"></el-avatar>
+      <div v-if="isonlion()">
+        <div class="accsty">
+          <div>
+            <el-avatar icon="el-icon-user-solid"></el-avatar>
+          </div>
+          <span class="fontsty">&nbsp;&nbsp;{{userid}}</span>   
+        </div>
+      </div>       
+      <div v-else>
+        <div class="accsty" @click="tologin">
+          <div>
+            <el-avatar icon="el-icon-user-solid"></el-avatar>
+          </div>
+          <span class="fontsty">&nbsp;&nbsp;{{userid}}</span>   
+        </div>
       </div>
-      <span class="fontsty">&nbsp;&nbsp;登陆/注册</span> 
-      </div>
-      </el-col>
+     </el-col>
+
   </el-header>
+
   <el-main>
     <el-col :span="24"><div class="accsty" @click="comingsoon">
       <img class="logoimg" src="../../assets/accountimg/redpaper.png" alt="">
@@ -67,6 +79,11 @@
 <script>
 import PageHeader from '../../components/PageHeader/PageHeader.vue';
 export default {
+  data() {
+    return{
+      userid:'登陆/注册'
+    };
+  },
   methods:{
     tologin(){
       //指定跳转地址
@@ -75,10 +92,17 @@ export default {
     tosetting(){
       //指定跳转地址
       this.$router.push('/setting')
+    },
+    isonlion(){
+      if(sessionStorage.getItem('userid')){
+        this.userid=sessionStorage.getItem('userid')
+        return true;
+      }
+      return false;
     }
   },
   components:{
-        PageHeader
+    PageHeader
   }
 }
 </script>

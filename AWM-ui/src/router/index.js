@@ -7,6 +7,7 @@ import QRcode from '../components/QRcode/QRcode.vue'
 import login from '@/views/login/login.vue'
 import register from '@/views/login/register.vue'
 import setting from '@/views/account/setting.vue'
+import historyorder from '@/views/order/historyorder.vue'
 Vue.use(Router)
 
 //获取原型对象上的push函数
@@ -59,6 +60,13 @@ export default new Router({
       path: '/setting',
       name: 'setting',
       component: setting,
+      meta: {
+        needLogin: true //需要加校检判断的路由
+      }
+    },{
+      path: '/historyorder',
+      name: 'historyorder',
+      component: historyorder,
       meta: {
         needLogin: true //需要加校检判断的路由
       }
