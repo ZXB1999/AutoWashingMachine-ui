@@ -29,6 +29,9 @@
      case '/order':
         this.pagetext='订单'
         break;
+    case '/register':
+        this.pagetext='用户注册'
+        break;
      default:
         this.pagetext='页面信息-默认'
 } 
