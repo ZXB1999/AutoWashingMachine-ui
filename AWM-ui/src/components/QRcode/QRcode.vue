@@ -26,18 +26,18 @@
             return {
                 result: '',//扫码结果信息
                 error: '',//错误信息
+                info:null
             }
         },
 
         methods: {
             
-            onDecode (result) {;
-                console.log(result);
+            onDecode (result) {
                 this.result = result
-                this.$options.methods.FindMachine(result);
+                const that = this
+                this.$options.methods.FindMachine(result,that);
             },
-            FindMachine (result) {
-                // var _this=this
+            FindMachine (result,that) {
                 axios.get('/FindMachineById/'+result,
                 {
                     headers:{
@@ -45,14 +45,15 @@
                     }
                 }
                 ).then(response => {
-                    console.log(response.data)
-                    // _this.$route.push({name: '/',params:response.data})
+                    that.$router.push({name: 'thisMachine',params:response.data}); //这个name对应的是路由配置的name，不是path，不要带/
                 })
-                // .catch(function (){
-                //     console.log('查不到')
-                // })
+                .catch(function (){
+                    console.log('查不到')
+                })
             },
-            
+
+
+
             async onInit (promise) {
                 try {
                     await promise

@@ -1,5 +1,6 @@
 <template>
   <div id="login">
+    <PageHeader></PageHeader>
     <h1>请登陆</h1>
     <div style="margin: 20px;"></div>
     <el-form :label-position="labelPosition"  label-width="50px" :model="formLabelAlign">
@@ -29,6 +30,7 @@
 </template>
 <script>
 import axios from 'axios';
+import PageHeader from '../../components/PageHeader/PageHeader.vue';
   export default {
     data() {
       return {
@@ -80,13 +82,13 @@ import axios from 'axios';
         toregister(){
           this.$router.push('/register')
         }
+    },
+    components:{
+        PageHeader
     }
   }
 </script>
 <style scoped>
-#login{
-  margin-top: 60px;
-}
 .el-input{
   width: 300px;
   right: 20px;

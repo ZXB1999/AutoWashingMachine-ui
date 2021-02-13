@@ -35,6 +35,11 @@
     case '/code':
         this.pagetext='扫描二维码'
         break;
+    case '/login':
+        break;
+    case '/thisMachine':
+        this.pagetext='创建订单'
+        break;
      default:
         this.pagetext='页面信息-默认'
 } 

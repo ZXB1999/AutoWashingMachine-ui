@@ -2,8 +2,7 @@
   <div id="app">
 
     <router-view/>
-    
-    <Tabbar></Tabbar>
+    <div v-if="TabbarShow"><Tabbar></Tabbar></div>
   </div>
 </template>
 
@@ -19,8 +18,27 @@ export default {
   created:function(){
     this.$router.push('/')
   },
+  data() {
+    return {
+      TabbarShow: true
+    };
+  },
   components:{
     Tabbar
+  },
+  watch: {
+    $route(to, from) {
+      switch(this.$route.path){
+        case '/thisMachine':
+          this.TabbarShow=false;
+          break;
+        case '/login':
+          this.TabbarShow=false;
+          break;
+        default:
+          this.TabbarShow=true;
+      }
+    }
   }
 }
 </script>

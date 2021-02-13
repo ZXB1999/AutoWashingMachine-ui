@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import homepage from '@/views/homepage/homepage.vue'
 import order from '@/views/order/order.vue'
+import thisMachine from '@/views/order/thisMachine.vue'
 import mine from '@/views/account/mine.vue'
 import QRcode from '../components/QRcode/QRcode.vue'
 import login from '@/views/login/login.vue'
@@ -67,6 +68,13 @@ export default new Router({
       path: '/historyorder',
       name: 'historyorder',
       component: historyorder,
+      meta: {
+        needLogin: true //需要加校检判断的路由
+      }
+    },{
+      path: '/thisMachine',
+      name: 'thisMachine',
+      component: thisMachine,
       meta: {
         needLogin: true //需要加校检判断的路由
       }
