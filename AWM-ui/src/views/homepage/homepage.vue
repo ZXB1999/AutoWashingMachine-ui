@@ -15,8 +15,8 @@
     <div class="block">
     <span class="demonstration">欢迎使用AWM自助洗衣系统</span>
     <el-carousel height="150px">
-      <el-carousel-item v-for="item in 4" :key="item">
-        <h3 class="small">{{ item }}</h3>
+      <el-carousel-item v-for="img in imgs" :key="img">
+        <img :src="img" alt="">
       </el-carousel-item>
     </el-carousel>
     </div>
@@ -47,6 +47,16 @@
 
 <script>
 export default {
+  data() {
+      return {
+        imgs:[
+          require('../../assets/homepageimg/hp0001.png'),
+          require('../../assets/homepageimg/hp0002.png'),
+          require('../../assets/homepageimg/hp0003.png'),
+          require('../../assets/homepageimg/hp0004.png')
+        ]
+      }
+  },
   methods:{
     gotoQRcode(){
       //指定跳转地址
@@ -66,14 +76,6 @@ export default {
     opacity: 0.75;
     line-height: 150px;
     margin: 0;
-  }
-
-  .el-carousel__item:nth-child(2n) {
-     background-color: #99a9bf;
-  }
-  
-  .el-carousel__item:nth-child(2n+1) {
-     background-color: #d3dce6;
   }
   .imgsty{
     width: 80px;

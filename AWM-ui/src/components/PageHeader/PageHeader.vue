@@ -32,6 +32,9 @@
     case '/register':
         this.pagetext='用户注册'
         break;
+    case '/code':
+        this.pagetext='扫描二维码'
+        break;
      default:
         this.pagetext='页面信息-默认'
 } 

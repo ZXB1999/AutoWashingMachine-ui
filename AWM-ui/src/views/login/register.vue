@@ -29,14 +29,15 @@ import axios from 'axios';
         if (!value) {
           return callback(new Error('账号不能为空'));
         }
-        axios.get('/IsExist/'+this.ruleForm.account)
+        setTimeout(() => {
+          axios.get('/IsExist/'+this.ruleForm.account)
         .then(res=>{
           if(res.data){
             return callback(new Error('账号已存在'));
+          }else{
+            callback();
           }
         })
-        // axios.get('/IsExist/'+this.ruleForm.account)
-        setTimeout(() => {
         }, 1000);
       };
       var validatePass = (rule, value, callback) => {
@@ -85,21 +86,22 @@ import axios from 'axios';
         let data = {"awmusername":this.ruleForm.account,"password":this.ruleForm.pass};
         this.$refs[formName].validate((valid) => {
           if (valid) {
-            alert('submit!');
+            axios.post('/Register',data)
+            .then(res=>{
+            if(res.data.msg==='注册成功'){
+              //这里应该有一步逻辑处理
+            }else{
+
+            } 
+          })
+            location.reload();
           } else {
             console.log('error submit!!');
             return false;
           }
         });
-        axios.post('/Register',data)
-        .then(res=>{
-          if(res.data.msg==='注册成功'){
-              location.reload()
-          }else{
-            alert(res.data.msg)
-          }
-          
-        })
+
+        
       },
       resetForm(formName) {
         this.$refs[formName].resetFields();

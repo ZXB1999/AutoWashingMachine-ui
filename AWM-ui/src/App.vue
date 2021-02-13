@@ -11,7 +11,7 @@
 import Tabbar from'../src/components/tabbar/Tabbar'
 
 $(function () {
-    console.log(123)
+    console.log('欢迎使用AWM自助洗衣系统')
   });
   
 export default {
