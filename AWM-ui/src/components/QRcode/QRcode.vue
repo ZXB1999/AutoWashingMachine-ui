@@ -3,7 +3,7 @@
         <PageHeader></PageHeader>
         <p class="error">{{ error }}<!--</p>错误信息 -->
         <h1>请扫描设备二维码</h1>
-        <qrcode-stream @decode="onDecode" @init="onInit" />
+        <qrcode-stream @decode="onDecode" @init="onInit" v-loading.fullscreen.lock="fullscreenLoading" />
     </div>
 </template>
 
@@ -26,7 +26,8 @@
             return {
                 result: '',//扫码结果信息
                 error: '',//错误信息
-                info:null
+                info:null,
+                fullscreenLoading: false
             }
         },
 
@@ -45,7 +46,11 @@
                     }
                 }
                 ).then(response => {
+                    that.fullscreenLoading = true;
+                    setTimeout(() => {
+                    that.fullscreenLoading = false;
                     that.$router.push({name: 'thisMachine',params:response.data}); //这个name对应的是路由配置的name，不是path，不要带/
+                    }, 2000);
                 })
                 .catch(function (){
                     console.log('查不到')

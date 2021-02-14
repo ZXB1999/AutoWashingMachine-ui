@@ -24,7 +24,7 @@
       </div>
       </el-col>
       
-    <el-col :span="24"><div class="accsty" @click="tologout">
+    <el-col :span="24"><div class="accsty" @click="tologout();openFullScreen()" v-loading.fullscreen.lock="fullscreenLoading">
       <span class="fontsty">退出登陆</span>
       <i class="el-icon-arrow-right"></i>
       </div>
@@ -43,7 +43,19 @@
 import PageHeader from '../../components/PageHeader/PageHeader.vue';
 import axios from 'axios';
 export default {
+  data() {
+      return {
+        fullscreenLoading: false
+      }
+    },
   methods:{
+    openFullScreen() {
+        this.fullscreenLoading = true;
+        setTimeout(() => {
+          this.fullscreenLoading = false;
+          this.$router.push('/')
+        }, 2000);
+      },
     tologout(){
       axios.get('/Logout/'+sessionStorage.getItem("access_token"))
       .then(res=>{
@@ -52,7 +64,6 @@ export default {
         }
         sessionStorage.clear(); 
         })
-      this.$router.push('/')
     }
   },
   components:{

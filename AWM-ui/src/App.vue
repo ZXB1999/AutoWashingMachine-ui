@@ -35,6 +35,9 @@ export default {
         case '/login':
           this.TabbarShow=false;
           break;
+        case '/register':
+          this.TabbarShow=false;
+          break;
         default:
           this.TabbarShow=true;
       }

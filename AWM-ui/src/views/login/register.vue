@@ -14,7 +14,7 @@
             <el-input type="password" v-model="ruleForm.checkPass" autocomplete="off"></el-input>
             </el-form-item>
             <el-form-item>
-            <el-button type="primary" @click="submitForm('ruleForm')">提交</el-button>
+            <el-button type="primary" @click="submitForm('ruleForm');openFullScreen()" v-loading.fullscreen.lock="fullscreenLoading">提交</el-button>
             <el-button @click="resetForm('ruleForm')">重置</el-button>
             </el-form-item>
         </el-form>
@@ -60,6 +60,7 @@ import axios from 'axios';
         }
       };
       return {
+        fullscreenLoading: false,
         ruleForm: {
           pass: '',
           checkPass: '',
@@ -82,6 +83,13 @@ import axios from 'axios';
         PageHeader
     },
     methods: {
+      openFullScreen() {
+        this.fullscreenLoading = true;
+        setTimeout(() => {
+          this.fullscreenLoading = false;
+          this.$router.push('/')
+        }, 2000);
+      },
       submitForm(formName) {
         let data = {"awmusername":this.ruleForm.account,"password":this.ruleForm.pass};
         this.$refs[formName].validate((valid) => {

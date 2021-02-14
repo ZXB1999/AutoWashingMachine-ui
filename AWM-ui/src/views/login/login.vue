@@ -16,11 +16,12 @@
             :r="10"
             :w="310"
             :h="155"
-            @success="onSuccess"
+            @success="onSuccess();openFullScreen()"
             @fail="onFail"
             @refresh="onRefresh"
             :slider-text="text"
             :imgs="img"
+            v-loading.fullscreen.lock="fullscreenLoading"
             >
       </slide-verify>
       <div>{{msg}}</div>
@@ -46,14 +47,23 @@ import PageHeader from '../../components/PageHeader/PageHeader.vue';
           name: '',
           region: '',
           type: ''
-        }
+        },
+        fullscreenLoading: false
       };
     },
     methods: {
+      openFullScreen() {
+        this.fullscreenLoading = true;
+        setTimeout(() => {
+          this.fullscreenLoading = false;
+          this.$router.push('/')
+        }, 2000);
+      },
         onSuccess(){
+          const that=this
           if(this.formLabelAlign.name===''||this.formLabelAlign.region===''){
             alert("请输入用户名或密码")
-                location.reload();
+            return
           }
           this.msg = '验证成功'
             axios.post('/Login?client_id='+"myapp"+"&client_secret="+"scma_app"+"&scope="+"all"+"&grant_type="+"password"+"&username="+this.formLabelAlign.name+"&password="+this.formLabelAlign.region)
@@ -65,12 +75,10 @@ import PageHeader from '../../components/PageHeader/PageHeader.vue';
                   sessionStorage.clear()
                   sessionStorage.setItem('userid',this.formLabelAlign.name)
                   sessionStorage['access_token']=res.data.access_token
-                  this.$router.go(-1)
                 }
               })
               .catch(function () {
                 alert("用户名或密码错误")
-                location.reload();
               });
         },
         onFail(){
