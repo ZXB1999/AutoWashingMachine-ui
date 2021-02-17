@@ -69,7 +69,7 @@ import PageHeader from '../../components/PageHeader/PageHeader.vue';
             return false;
           }
           this.msg = '验证成功'
-            axios.post('/Login?client_id='+"myapp"+"&client_secret="+"scma_app"+"&scope="+"all"+"&grant_type="+"password"+"&username="+this.formLabelAlign.name+"&password="+this.formLabelAlign.region)
+            axios.post('/Login?client_id='+"AWM_client"+"&client_secret="+"TTMY-ZXB"+"&scope="+"all"+"&grant_type="+"password"+"&username="+this.formLabelAlign.name+"&password="+this.formLabelAlign.region)
               .then(res=>{
                 if(res.status===200){
                   localStorage.clear() //清理
