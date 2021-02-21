@@ -16,13 +16,14 @@ const versionRequirements = [
   }
 ]
 
-if (shell.which('npm')) {
-  versionRequirements.push({
-    name: 'npm',
-    currentVersion: exec('npm --version'),
-    versionRequirement: packageConfig.engines.npm
-  })
-}
+//npm build卡住的原因 版本检测
+// if (shell.which('npm')) {
+//   versionRequirements.push({
+//     name: 'npm',
+//     currentVersion: exec('npm --version'),
+//     versionRequirement: packageConfig.engines.npm
+//   })
+// }
 
 module.exports = function () {
   const warnings = []

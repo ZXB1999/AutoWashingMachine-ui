@@ -9,6 +9,7 @@ import login from '@/views/login/login.vue'
 import register from '@/views/login/register.vue'
 import setting from '@/views/account/setting.vue'
 import historyorder from '@/views/order/historyorder.vue'
+
 Vue.use(Router)
 
 //获取原型对象上的push函数
@@ -79,7 +80,7 @@ export default new Router({
         needLogin: true //需要加校检判断的路由
       }
     }
-    
+     
   ]
 })
 

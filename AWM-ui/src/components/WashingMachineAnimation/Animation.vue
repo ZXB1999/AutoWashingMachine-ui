@@ -1,7 +1,7 @@
 <template>
-    <div class="main">
-        <div class="l">
-            <div class="l__face l__face--front">
+  <div class="main">
+      <div class="l">
+          <div class="l__face l__face--front">
             <div class="l__control"></div>
             <div class="l__control"></div>
             <div class="l__buttons">
@@ -9,25 +9,25 @@
                 <div class="l__button"></div>
                 <div class="l__button"></div>
             </div>
-      <div class="l__c1">
-        <div class="l__c2">
-          <div class="l__clothes">
-            <div class="l__clothes-i"></div>
-            <div class="l__clothes-i"></div>
+          <div class="l__c1">
+            <div class="l__c2">
+              <div class="l__clothes">
+                <div class="l__clothes-i"></div>
+                <div class="l__clothes-i"></div>
+              </div>
+            </div>
           </div>
         </div>
+        <div class="l__face l__face--back"></div>
+        <div class="l__face l__face--right"></div>
+        <div class="l__face l__face--left"></div>
+        <div class="l__face l__face--top"></div>
+        <div class="l__face l__face--bottom"></div>
       </div>
-        </div>
-    <div class="l__face l__face--back"></div>
-    <div class="l__face l__face--right"></div>
-    <div class="l__face l__face--left"></div>
-    <div class="l__face l__face--top"></div>
-    <div class="l__face l__face--bottom"></div>
-        </div>
-        <div class="s">
-            <div class="l__face s__shadow"></div>
-        </div>
-    </div>
+      <div class="s">
+        <div class="l__face s__shadow"></div>
+      </div>
+  </div>
 </template>
 <script>
 export default {
@@ -35,35 +35,16 @@ export default {
 }
 </script>
 <style scoped>
-/* Variables */
-/* Reset */
-*, *::after, *::before {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/* Generic */
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100vh;
-  background-color: #FFB791;
-}
-
 .main {
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
-  width: 400px;
-  height: 400px;
+  width: 350px;
+  height: 350px;
 }
 
-.l,
-.s {
+.l,.s {
   position: relative;
   left: calc(50% - 300px);
   top: calc(50% - 300px);
@@ -72,15 +53,13 @@ body {
   transform: perspective(2000px) rotate3d(-500, -1000, 100, 30deg);
   animation: l .05s ease-in-out infinite alternate;
 }
-.l__face,
-.s__face {
+.l__face,.s__face {
   position: absolute;
   height: 200px;
   width: 200px;
   z-index: 10;
 }
-.l__face--front,
-.s__face--front {
+.l__face--front,.s__face--front {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -89,34 +68,28 @@ body {
   border-top: 5px solid #D3FFFD;
   border-bottom: 5px solid #C8CFD4;
 }
-.l__face--back,
-.s__face--back {
+.l__face--back,.s__face--back {
   transform: rotateY(180deg) translateZ(100px);
   background-color: #C8CFD4;
 }
-.l__face--right,
-.s__face--right {
+.l__face--right,.s__face--right {
   transform: rotateY(90deg) translateZ(100px);
   background-image: linear-gradient(to bottom, #5ECD9D 20%, #C8CFD4 20%);
   border-top: 5px solid #85d9b5;
 }
-.l__face--left,
-.s__face--left {
+.l__face--left,.s__face--left {
   transform: rotateY(-90deg) translateZ(100px);
   background-color: #FEFFFF;
 }
-.l__face--top,
-.s__face--top {
+.l__face--top,.s__face--top {
   transform: rotateX(90deg) translateZ(100px);
   background-color: #D3FFFD;
 }
-.l__face--bottom,
-.s__face--bottom {
+.l__face--bottom.s__face--bottom {
   transform: rotateX(-90deg) translateZ(100px);
   background-color: #C8CFD4;
 }
-.l__c1,
-.s__c1 {
+.l__c1,.s__c1 {
   display: flex;
   align-items: center;
   width: 120px;
@@ -128,8 +101,7 @@ body {
   box-shadow: 0 0 0 1px rgba(200, 207, 212, 0.75), 1px 1px 1px 1px rgba(200, 207, 212, 0.5);
   background-image: linear-gradient(200deg, #5ECD9D 50%, #54ffb7 65%);
 }
-.l__c2,
-.s__c2 {
+.l__c2,.s__c2 {
   position: absolute;
   right: 0px;
   width: 100px;
@@ -138,8 +110,7 @@ body {
   background-color: #e6f4f9;
   overflow: hidden;
 }
-.l__c2::before,
-.s__c2::before {
+.l__c2::before,.s__c2::before {
   content: '';
   position: absolute;
   bottom: 20px;
@@ -149,8 +120,7 @@ body {
   border-radius: 50%;
   background-image: linear-gradient(to bottom, #364246, rgba(138, 157, 165, 0.4));
 }
-.l__c2::after,
-.s__c2::after {
+.l__c2::after,.s__c2::after {
   content: '';
   position: absolute;
   top: 30px;
@@ -160,8 +130,7 @@ body {
   border-radius: 50%;
   background-image: linear-gradient(to bottom, rgba(165, 187, 197, 0.7) 50%, rgba(165, 187, 197, 0.1) 60%);
 }
-.l__control,
-.s__control {
+.l__control.s__control {
   position: absolute;
   top: 6px;
   left: 20px;
@@ -171,12 +140,10 @@ body {
   background-color: #FEFFFF;
   box-shadow: inset -1px 0 0 #C8CFD4, 3px 2px 0 #5ECD9D;
 }
-.l__control:nth-of-type(2),
-.s__control:nth-of-type(2) {
+.l__control:nth-of-type(2),.s__control:nth-of-type(2) {
   left: 55px;
 }
-.l__button,
-.s__button {
+.l__button,.s__button {
   position: absolute;
   top: 16px;
   left: 100px;
@@ -186,16 +153,13 @@ body {
   box-shadow: inset -1px 0 0 #C8CFD4, 1px 1px 0 #C8CFD4;
   background-color: #F36955;
 }
-.l__button:nth-of-type(2),
-.s__button:nth-of-type(2) {
+.l__button:nth-of-type(2),.s__button:nth-of-type(2) {
   left: 110px;
 }
-.l__button:nth-of-type(3),
-.s__button:nth-of-type(3) {
+.l__button:nth-of-type(3),.s__button:nth-of-type(3) {
   left: 120px;
 }
-.l__clothes,
-.s__clothes {
+.l__clothes,.s__clothes {
   position: absolute;
   top: 50px;
   left: 60px;
@@ -204,8 +168,7 @@ body {
   z-index: 100;
   animation: clothes .3s linear infinite;
 }
-.l__clothes-i,
-.s__clothes-i {
+.l__clothes-i,.s__clothes-i {
   position: absolute;
   left: 40px;
   width: 50px;
@@ -213,8 +176,7 @@ body {
   background-color: #FFB791;
   border-radius: 30% 70% 70% 30%/30% 30% 70% 70%;
 }
-.l__clothes-i:nth-of-type(2),
-.s__clothes-i:nth-of-type(2) {
+.l__clothes-i:nth-of-type(2),.s__clothes-i:nth-of-type(2) {
   left: 20px;
   bottom: 0;
   border-radius: 24% 76% 45% 55%/62% 30% 70% 38%;
@@ -223,18 +185,17 @@ body {
 
 .s {
   animation: none;
-  z-index: -100;
+  z-index: 1;
 }
 .s__shadow {
   transform: rotateX(-90deg) translateZ(50px) translateY(45px) translateX(25px) skewX(10deg);
   width: 225px;
   height: 300px;
   border-radius: 5px;
-  background-color: #F36955;
+  background-color: #b39894;
   animation: shadow .05s ease-in-out infinite alternate;
 }
 
-/**/
 @keyframes clothes {
   0% {
     transform-origin: left;
