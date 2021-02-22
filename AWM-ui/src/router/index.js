@@ -9,6 +9,7 @@ import login from '@/views/login/login.vue'
 import register from '@/views/login/register.vue'
 import setting from '@/views/account/setting.vue'
 import historyorder from '@/views/order/historyorder.vue'
+import Setout from '@/views/order/setout.vue'
 
 Vue.use(Router)
 
@@ -16,7 +17,7 @@ Vue.use(Router)
 const originalPush = Router.prototype.push
 //修改原型对象中的push方法
 Router.prototype.push = function push(location) {
-   return originalPush.call(this, location).catch(err => err)
+  return originalPush.call(this, location).catch(err => err)
 }
 
 
@@ -28,59 +29,66 @@ export default new Router({
       path: '/',
       name: 'HelloWorld',
       component: homepage
-    },{
+    }, {
       path: '/homepage',
       name: 'homepage',
       component: homepage
-    },{
+    }, {
       path: '/order',
       name: 'order',
       component: order,
       meta: {
         needLogin: true //需要加校检判断的路由
       }
-    },{
+    }, {
       path: '/account',
       name: 'mine',
       component: mine
-    },{
+    }, {
       path: '/code',
       name: 'QRcode',
       component: QRcode,
       meta: {
         needLogin: true //需要加校检判断的路由
       }
-    },{
+    }, {
       path: '/login',
       name: 'login',
       component: login
-    },{
+    }, {
       path: '/register',
       name: 'register',
       component: register
-    },{
+    }, {
       path: '/setting',
       name: 'setting',
       component: setting,
       meta: {
         needLogin: true //需要加校检判断的路由
       }
-    },{
+    }, {
       path: '/historyorder',
       name: 'historyorder',
       component: historyorder,
       meta: {
         needLogin: true //需要加校检判断的路由
       }
-    },{
+    }, {
       path: '/thisMachine',
       name: 'thisMachine',
       component: thisMachine,
       meta: {
         needLogin: true //需要加校检判断的路由
       }
+    }, {
+      path: '/setout',
+      name: 'setout',
+      component: Setout,
+      meta: {
+        needLogin: true //需要加校检判断的路由
+      }
     }
-     
+
   ]
 })
 

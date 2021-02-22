@@ -190,6 +190,22 @@ export default {
   mounted() {
     $(".ipt_pay input:first").focus();
   },
+  mounted: function () {
+    var _this = this;
+    let yy = new Date().getFullYear();
+    let mm = new Date().getMonth() + 1;
+    let dd = new Date().getDate();
+    let hh = new Date().getHours();
+    let mf =
+      new Date().getMinutes() < 10
+        ? "0" + new Date().getMinutes()
+        : new Date().getMinutes();
+    let ss =
+      new Date().getSeconds() < 10
+        ? "0" + new Date().getSeconds()
+        : new Date().getSeconds();
+    _this.gettime = yy + "-" + mm + "-" + dd + " " + hh + ":" + mf + ":" + ss;
+  },
   data() {
     return {
       index: -1,
@@ -200,6 +216,7 @@ export default {
       ordermsg: null,
       mypayshow: this.payshow,
       pwdflg: 5,
+      gettime: "",
     };
   },
   watch: {
@@ -262,9 +279,17 @@ export default {
             if (response.data === true) {
               this.pwdflg = 5;
               alert("密码正确");
-              // console.log(sessionStorage.getItem("userid"))
-              // console.log(this.ordermsg)
-              this.$router.push("/order");
+
+              this.$router.push({
+                name: "setout",
+                params: {
+                  machineId: this.data.machineId,
+                  serverlevel: this.ordermsg.serverlevel,
+                  starttime: this.gettime,
+                },
+              });
+
+              // this.$router.push("/order");
             } else {
               alert("密码错误,还有" + this.pwdflg + "次机会");
               $(".ipt_pay input").val("");
@@ -293,6 +318,7 @@ export default {
   created() {
     const that = this;
     this.data = this.$route.params;
+    this.order_token = sessionStorage.getItem("order_token");
     this.axios
       .get("/FindMachineByState/" + this.data.machineId, {
         headers: {
