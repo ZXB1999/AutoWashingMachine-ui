@@ -97,7 +97,10 @@
             <el-step title="步骤 2" icon="el-icon-upload"></el-step>
             <el-step title="步骤 3" icon="el-icon-picture"></el-step>
           </el-steps>
-          <Animation></Animation>
+          <h4>设备运行中</h4>
+          <div style="height: 5rem;"></div>
+          <img src="../../assets/img/useing.png" alt="">\
+          <div style="height: 2rem;"></div>
         </div>
         <div class="bug"></div>
       </div>
@@ -179,7 +182,6 @@
 </template>
 <script>
 import PageHeader from "../../components/PageHeader/PageHeader.vue";
-import Animation from "../../components/WashingMachineAnimation/Animation.vue";
 export default {
   props: {
     payshow: {
@@ -332,7 +334,7 @@ export default {
         console.log("查不到");
       });
   },
-  components: { PageHeader, Animation },
+  components: { PageHeader},
 };
 </script>
 <style scoped>
