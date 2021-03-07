@@ -98,9 +98,9 @@
             <el-step title="步骤 3" icon="el-icon-picture"></el-step>
           </el-steps>
           <h4>设备运行中</h4>
-          <div style="height: 5rem;"></div>
-          <img src="../../assets/img/useing.png" alt="">\
-          <div style="height: 2rem;"></div>
+          <div style="height: 5rem"></div>
+          <img src="../../assets/img/useing.png" alt="" />\
+          <div style="height: 2rem"></div>
         </div>
         <div class="bug"></div>
       </div>
@@ -280,7 +280,14 @@ export default {
           .then((response) => {
             if (response.data === true) {
               this.pwdflg = 5;
-              alert("密码正确");
+
+              this.$alert("密码正确", "提示", {
+                confirmButtonText: "确定",
+                customClass: "winClass", //弹窗样式,style标签不能带scope
+                callback: (action) => {
+                  
+                },
+              });
 
               this.$router.push({
                 name: "setout",
@@ -334,7 +341,7 @@ export default {
         console.log("查不到");
       });
   },
-  components: { PageHeader},
+  components: { PageHeader },
 };
 </script>
 <style scoped>
@@ -514,5 +521,10 @@ footer {
 }
 .b9 {
   background: #c2c2c2 !important;
+}
+</style>
+<style>
+.winClass {
+  width: 300px;
 }
 </style>
