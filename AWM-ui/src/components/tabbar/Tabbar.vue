@@ -18,6 +18,11 @@
 <script type="text/javascript">
 import Item from "../tabbar/Item";
 export default {
+  props: {
+    title: {
+      type: String,
+    }
+  },
   components: {
     Item,
   },
@@ -49,8 +54,19 @@ export default {
   methods: {
     getVal: function (res) {
       this.selected = res;
+      console.log("===========getVal")
     },
   },
+  created(){
+    this.selected=this.title
+    console.log("===========created")
+  },
+  watch: {
+    title(newVal) {
+      this.selected=this.title
+      console.log("===========watch")
+    }
+  }
 };
 </script>
 <style type="text/css">

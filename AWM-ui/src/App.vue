@@ -2,7 +2,7 @@
   <div id="app">
 
     <router-view/>
-    <div v-if="TabbarShow"><Tabbar></Tabbar></div>
+    <div v-if="TabbarShow"><Tabbar v-bind:title="imgsrc"></Tabbar></div>
   </div>
 </template>
 
@@ -20,7 +20,8 @@ export default {
   },
   data() {
     return {
-      TabbarShow: true
+      TabbarShow: true,
+      imgsrc:null
     };
   },
   components:{
@@ -44,7 +45,22 @@ export default {
         default:
           this.TabbarShow=true;
       }
-    }
+    },
+    "$route.path": function (newVal, oldVal) {
+      this.imgsrc=null
+      if (newVal === "/homepage") {
+        this.imgsrc="homepage"
+      }
+      if (newVal === "/") {
+        this.imgsrc="homepage"
+      }
+      if (newVal === "/order") {
+        this.imgsrc="order"
+      }
+      if (newVal === "/account") {
+        this.imgsrc="account"
+      }
+    },
   }
 }
 </script>

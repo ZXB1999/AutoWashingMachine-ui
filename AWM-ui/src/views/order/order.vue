@@ -6,7 +6,8 @@
         <h4>进行中的订单</h4>
         <el-col :span="24"
           ><div class="uorder" v-for="(item, index) in this.data" :key="index">
-            <span class="spn-sty-t">下单时间:{{ item.createTime | formatDate }}</span
+            <span class="spn-sty-t"
+              >下单时间:{{ item.createTime | formatDate }}</span
             ><br />
             <span class="spn-sty-t">设备编号:{{ item.machineId }}</span
             ><br />
@@ -56,7 +57,7 @@ export default {
   },
   created() {
     this.axios
-      .get("/UseingOrder/"+sessionStorage.getItem("userid"), {
+      .get("/UseingOrder/" + sessionStorage.getItem("userid"), {
         headers: {
           Authorization: "Bearer " + sessionStorage.getItem("access_token"),
         }, //oauth2.0认证
@@ -97,7 +98,7 @@ export default {
 .tbuttom {
   float: left;
 }
-.spn-sty-t{
+.spn-sty-t {
   margin-left: 10px;
   float: left;
 }

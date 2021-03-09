@@ -68,6 +68,13 @@ module.exports = {
           '^/CreatOrder': '/AWM/PROVIDERMACHINE/creatorder' 
         }
       },
+      '/HistoryOrder': {
+        target: serverpath,  //这里后台的地址模拟的;应该填写你们真实的后台接口
+        changOrigin: true,  //允许跨域
+        pathRewrite: {
+          '^/HistoryOrder': '/AWM/PROVIDERORDER/historyOrder' 
+        }
+      },
       '/UseingOrder': {
         target: serverpath,  //这里后台的地址模拟的;应该填写你们真实的后台接口
         changOrigin: true,  //允许跨域

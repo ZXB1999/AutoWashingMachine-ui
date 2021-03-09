@@ -33,6 +33,9 @@ export default {
       case "/order":
         this.pagetext = "订单";
         break;
+      case "/historyorder":
+        this.pagetext = "历史订单";
+        break;
       case "/register":
         this.pagetext = "用户注册";
         break;
@@ -55,5 +58,7 @@ export default {
 #pageheader {
   margin-top: 20px;
   margin-bottom: 20px;
+  /* position: fixed; */
+  height: 38px;
 }
 </style>
