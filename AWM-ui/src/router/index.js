@@ -10,6 +10,7 @@ import register from '@/views/login/register.vue'
 import setting from '@/views/account/setting.vue'
 import historyorder from '@/views/order/historyorder.vue'
 import Setout from '@/views/order/setout.vue'
+import List from '@/views/MachineList/list.vue'
 
 Vue.use(Router)
 
@@ -84,6 +85,13 @@ export default new Router({
       path: '/setout',
       name: 'setout',
       component: Setout,
+      meta: {
+        needLogin: true //需要加校检判断的路由
+      }
+    }, {
+      path: '/MachineList',
+      name: 'MachineList',
+      component: List,
       meta: {
         needLogin: true //需要加校检判断的路由
       }

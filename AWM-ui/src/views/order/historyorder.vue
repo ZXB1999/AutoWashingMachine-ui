@@ -69,14 +69,14 @@ export default {
 </script>
 <style scoped>
 .container{
-  height: 608px;
+  height: 570px;
   padding: 0;
 }
 .el-col {
   position: fixed;
   top: 0;
   bottom: 0;
-  height: 548px;
+  height: 570px;
   margin-top: 60px;
   overflow: scroll;
   background-color: #e9e9eb;

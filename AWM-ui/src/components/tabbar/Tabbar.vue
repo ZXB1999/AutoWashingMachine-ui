@@ -54,17 +54,14 @@ export default {
   methods: {
     getVal: function (res) {
       this.selected = res;
-      console.log("===========getVal")
     },
   },
   created(){
     this.selected=this.title
-    console.log("===========created")
   },
   watch: {
     title(newVal) {
       this.selected=this.title
-      console.log("===========watch")
     }
   }
 };

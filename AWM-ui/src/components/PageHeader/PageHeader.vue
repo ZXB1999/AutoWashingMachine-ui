@@ -47,18 +47,19 @@ export default {
       case "/thisMachine":
         this.pagetext = "创建订单";
         break;
+      case "/MachineList":
+        this.pagetext = "所有设备";
+        break;
       default:
         this.pagetext = "页面信息-默认";
     }
   },
 };
 </script>
-
 <style>
 #pageheader {
   margin-top: 20px;
   margin-bottom: 20px;
-  /* position: fixed; */
   height: 38px;
 }
 </style>

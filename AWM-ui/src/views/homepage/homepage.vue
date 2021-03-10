@@ -25,7 +25,7 @@
     <div style="height: 5rem;"></div>
   </el-col>
 
-  <el-col :span="6"><div class="grid-content bg-purple" @click="comingsoon"><el-button type="primary" round >
+  <el-col :span="6"><div class="grid-content bg-purple" @click="gotoList"><el-button type="primary" round >
     <span><img class="smallimgsty" src="../../assets/img/WashingMachine.png" alt=""></span><br><br>
     洗烘</el-button></div></el-col>
   <el-col :span="6"><div class="grid-content bg-purple" @click="comingsoon"><el-button type="primary" round >
@@ -61,6 +61,10 @@ export default {
     gotoQRcode(){
       //指定跳转地址
       this.$router.push('/code')
+    },
+    gotoList(){
+      //指定跳转地址
+      this.$router.push('/MachineList')
     }
   }
 }
