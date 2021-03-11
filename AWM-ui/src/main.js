@@ -32,6 +32,22 @@ new Vue({
 
 //配合路由中的meta进行登陆验证
 router.beforeEach(function(to, from, next) {
+  if(to.meta.whitchCli){
+    let flag = navigator.userAgent.match(
+      /(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i
+    );
+    if(flag===null){
+      // alert("pc端")
+      this.TabbarShow = false;
+      next({
+        name: "MoveToMobile"
+      });
+    }
+  }
+  else {
+    //是移动端
+    next(); //继续往后走
+  }
   if (to.meta.needLogin) {
     //页面是否登录
     if (sessionStorage.getItem("access_token")&&sessionStorage.getItem("access_token")!='undefined') {

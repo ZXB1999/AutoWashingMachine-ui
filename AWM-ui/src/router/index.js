@@ -11,6 +11,7 @@ import setting from '@/views/account/setting.vue'
 import historyorder from '@/views/order/historyorder.vue'
 import Setout from '@/views/order/setout.vue'
 import List from '@/views/MachineList/list.vue'
+import MoveToMobile from '@/views/Error/MoveToMobile.vue'
 
 Vue.use(Router)
 
@@ -29,72 +30,99 @@ export default new Router({
     {
       path: '/',
       name: 'HelloWorld',
-      component: homepage
+      component: homepage,
+      meta: {
+        whitchCli: true //校验客户端
+      }
     }, {
       path: '/homepage',
       name: 'homepage',
-      component: homepage
+      component: homepage,
+      meta: {
+        whitchCli: true  //校验客户端
+      }
     }, {
       path: '/order',
       name: 'order',
       component: order,
       meta: {
-        needLogin: true //需要加校检判断的路由
+        needLogin: true, //需要加校检判断的路由
+        whitchCli: true  //校验客户端
       }
     }, {
       path: '/account',
       name: 'mine',
-      component: mine
+      component: mine,
+      meta: {
+        whitchCli: true  //校验客户端
+      }
     }, {
       path: '/code',
       name: 'QRcode',
       component: QRcode,
       meta: {
-        needLogin: true //需要加校检判断的路由
+        needLogin: true, //需要加校检判断的路由
+        whitchCli: true  //校验客户端
       }
     }, {
       path: '/login',
       name: 'login',
-      component: login
+      component: login,
+      meta: {
+        whitchCli: true //校验客户端
+      }
     }, {
       path: '/register',
       name: 'register',
-      component: register
+      component: register,
+      meta: {
+        whitchCli: true //校验客户端
+      }
     }, {
       path: '/setting',
       name: 'setting',
       component: setting,
       meta: {
-        needLogin: true //需要加校检判断的路由
+        needLogin: true, //需要加校检判断的路由
+        whitchCli: true  //校验客户端
       }
     }, {
       path: '/historyorder',
       name: 'historyorder',
       component: historyorder,
       meta: {
-        needLogin: true //需要加校检判断的路由
+        needLogin: true, //需要加校检判断的路由
+        whitchCli: true  //校验客户端
       }
     }, {
       path: '/thisMachine',
       name: 'thisMachine',
       component: thisMachine,
       meta: {
-        needLogin: true //需要加校检判断的路由
+        needLogin: true, //需要加校检判断的路由
+        whitchCli: true  //校验客户端
       }
     }, {
       path: '/setout',
       name: 'setout',
       component: Setout,
       meta: {
-        needLogin: true //需要加校检判断的路由
+        needLogin: true, //需要加校检判断的路由
+        whitchCli: true  //校验客户端
       }
     }, {
       path: '/MachineList',
       name: 'MachineList',
       component: List,
       meta: {
-        needLogin: true //需要加校检判断的路由
+        needLogin: true, //需要加校检判断的路由
+        whitchCli: true  //校验客户端
       }
+    }
+    , {
+      path: '/MoveToMobile',
+      name: 'MoveToMobile',
+      component: MoveToMobile,
     }
 
   ]
