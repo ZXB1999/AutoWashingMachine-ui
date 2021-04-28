@@ -249,7 +249,7 @@ export default {
     },
     Paytool() {
       if (this.pwdflg <= 0) {
-        alert("账号已锁定");
+        alert("本次支付已冻结");
       } else {
         this.mypayshow = true;
       }
