@@ -88,6 +88,20 @@ module.exports = {
         pathRewrite: {
           '^/MachineList': '/AWM/PROVIDERMACHINE/queryAll/list' 
         }
+      },
+      '/UserMsg': {
+        target: serverpath,  //这里后台的地址模拟的;应该填写你们真实的后台接口
+        changOrigin: true,  //允许跨域
+        pathRewrite: {
+          '^/UserMsg': '/AWM/PROVIDERUSER/usermsg' 
+        }
+      },
+      '/UptPhone': {
+        target: serverpath,  //这里后台的地址模拟的;应该填写你们真实的后台接口
+        changOrigin: true,  //允许跨域
+        pathRewrite: {
+          '^/UptPhone': '/AWM/PROVIDERUSER/uptphone' 
+        }
       }
     },
 

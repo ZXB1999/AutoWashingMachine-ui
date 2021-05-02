@@ -73,7 +73,7 @@
         </el-col>
 
         <el-col :span="24"
-          ><div class="accsty" @click="comingsoon">
+          ><div class="accsty" @click="toAboutus">
             <img
               class="logoimg"
               src="../../assets/accountimg/about.png"
@@ -117,7 +117,17 @@ export default {
     },
     tosetting() {
       //指定跳转地址
-      this.$router.push("/setting");
+      // this.$router.push("/setting");
+      this.$router.push({
+        name: "setting",
+        params: {
+          UserId: this.userid,
+        },
+      });
+    },
+    toAboutus() {
+      //指定跳转地址
+      this.$router.push("/Aboutus");
     },
     isonlion() {
       if (sessionStorage.getItem("userid")) {

@@ -10,6 +10,7 @@ import Tabbar from "../src/components/tabbar/Tabbar";
 
 $(function () {
   console.log("欢迎使用AWM自助洗衣系统");
+  console.log("感谢赵婉怡同学提供的帮助");
 });
 
 export default {

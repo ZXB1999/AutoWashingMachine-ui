@@ -50,6 +50,9 @@ export default {
       case "/MachineList":
         this.pagetext = "所有设备";
         break;
+      case "/Aboutus":
+        this.pagetext = "关于我们";
+        break;
       default:
         this.pagetext = "页面信息-默认";
     }

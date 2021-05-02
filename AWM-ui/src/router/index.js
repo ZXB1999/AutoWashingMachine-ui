@@ -12,6 +12,7 @@ import historyorder from '@/views/order/historyorder.vue'
 import Setout from '@/views/order/setout.vue'
 import List from '@/views/MachineList/list.vue'
 import MoveToMobile from '@/views/Error/MoveToMobile.vue'
+import Aboutus from '@/views/aboutus/aboutus.vue'
 
 Vue.use(Router)
 
@@ -123,6 +124,14 @@ export default new Router({
       path: '/MoveToMobile',
       name: 'MoveToMobile',
       component: MoveToMobile,
+    }, {
+      path: '/Aboutus',
+      name: 'Aboutus',
+      component: Aboutus,
+      meta: {
+        needLogin: true, //需要加校检判断的路由
+        whitchCli: true  //校验客户端
+      }
     }
 
   ]
