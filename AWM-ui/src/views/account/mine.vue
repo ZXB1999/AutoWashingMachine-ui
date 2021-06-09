@@ -25,13 +25,13 @@
 
       <el-main>
         <el-col :span="24"
-          ><div class="accsty" @click="comingsoon">
+          ><div class="accsty" @click="recharge">
             <img
               class="logoimg"
               src="../../assets/accountimg/redpaper.png"
               alt=""
             />
-            <span class="fontsty">红包</span>
+            <span class="fontsty">充值</span>
             <i class="el-icon-arrow-right"></i>
           </div>
         </el-col>
@@ -136,6 +136,14 @@ export default {
       }
       return false;
     },
+    recharge(){
+      this.axios
+      .get("/Recharge/" + sessionStorage.getItem("userid"), {
+        headers: {
+          Authorization: "Bearer " + sessionStorage.getItem("access_token"),
+        }, //oauth2.0认证
+      })
+    }
   },
   components: {
     PageHeader,

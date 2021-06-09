@@ -272,13 +272,13 @@ export default {
           paypwd: pay_pwd,
         };
         this.axios
-          .post("/Examine", data, {
+          .post("/Examine?price="+this.price, data, {
             headers: {
               Authorization: "Bearer " + sessionStorage.getItem("access_token"),
             }, //oauth2.0认证
           })
           .then((response) => {
-            if (response.data === true) {
+            if (response.data.code === 1) {
               this.pwdflg = 5;
 
               this.$alert("密码正确", "提示", {
@@ -299,11 +299,13 @@ export default {
               });
 
               // this.$router.push("/order");
-            } else {
+            } else  if(response.data.code === 3) {
               alert("密码错误,还有" + this.pwdflg + "次机会");
               $(".ipt_pay input").val("");
               this.index = -1;
               this.pwdflg -= 1;
+            }else if(response.data.code === 2){
+              alert("余额不足，请充值！");
             }
           })
           .catch(function () {
